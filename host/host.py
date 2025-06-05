@@ -95,7 +95,7 @@ class MCPCHost:
                         if tool_name in server_tool_names:
                             event_print(f"{server_name = }の{tool_name = }を{tool_arguments = }で実行します")
                             contents = await self.clients[server_name].execute_tool(
-                                tool_name=tool_name, tool_arguments=tool_arguments
+                                name=tool_name, arguments=tool_arguments
                             )
                             messages.append(
                                 {
