@@ -1,22 +1,23 @@
 import asyncio
 import os
+import sys
 from contextlib import AsyncExitStack
 from pathlib import Path
 from typing import Any
 
-from color_print import error_print, event_print, llm_print, user_input
 from dotenv import load_dotenv
 from openai import AsyncAzureOpenAI
+from utils import error_print, event_print, llm_print, user_input
 
-load_dotenv()
+sys.path.append(str(Path(__file__).parent.parent / "client"))
+from client import MCPClient
+
+load_dotenv(verbose=True)
 
 OPENAI_API_BASE = os.getenv("OPENAI_API_BASE")
 OPENAI_API_VERSION = os.getenv("OPENAI_API_VERSION")
 OPENAI_DEPLOYMENT_ID = os.getenv("OPENAI_DEPLOYMENT_ID")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-
-class MCPClient:
-    pass
 
 class MCPCHost:
     def __init__(self, server_parameters: dict[str, dict]):
