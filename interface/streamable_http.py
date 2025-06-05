@@ -24,7 +24,7 @@ async def main(app: Server, host: str = "127.0.0.1", port: int = 8000, log_level
     routes.append(Mount("/mcp", app=handle_streamable_http))
 
     # TODO: check what middleware and lifespan is.
-    starlette_app = Starlette(debug=False, routes=routes, middlewares=[], lifespan=lambda app: session_manager.run())
+    starlette_app = Starlette(debug=False, routes=routes, middleware=[], lifespan=lambda app: session_manager.run())
 
     config = uvicorn.Config(starlette_app, host=host, port=port, log_level=log_level)
     server = uvicorn.Server(config)

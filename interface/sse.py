@@ -31,7 +31,7 @@ async def main(app: Server, host: str = "127.0.0.1", port: int = 8000, log_level
     routes.append(Mount("/messages/", app=sse.handle_post_message))
 
     # TODO: check what middleware is.
-    starlette_app = Starlette(debug=False, routes=routes, middlewares=[])
+    starlette_app = Starlette(debug=False, routes=routes, middleware=[])
 
     config = uvicorn.Config(starlette_app, host=host, port=port, log_level=log_level)
     server = uvicorn.Server(config)
