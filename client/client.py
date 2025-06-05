@@ -81,7 +81,8 @@ class MCPClient:
 
     async def _get_tools(self):
         list_tools_response = await self.session.list_tools()
-        # OpenAI tool format is only taken into account
+        # TODO: OpenAI tool format is only taken into account
+        # Might be better to support Bedrock case.
         return [
             {
                 "type": "function",
